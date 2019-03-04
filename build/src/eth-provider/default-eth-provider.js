@@ -105,7 +105,7 @@ var DefaultEthProvider = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         contract = new this.web3.eth.Contract(filter.abi, filter.address);
-                        return [4 /*yield*/, contract.getPastEvents(filter.event, __assign({}, filter.indexed || {}, { fromBlock: filter.fromBlock, toBlock: filter.toBlock }))];
+                        return [4 /*yield*/, contract.getPastEvents(filter.event, __assign({}, (filter.indexed || {}), { fromBlock: filter.fromBlock, toBlock: filter.toBlock }))];
                     case 1:
                         events = _a.sent();
                         return [2 /*return*/, events.map(function (event) {
