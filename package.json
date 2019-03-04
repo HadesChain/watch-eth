@@ -1,7 +1,7 @@
 {
   "name": "watch-eth",
-  "version": "0.0.1-beta.3",
-  "description": "Robust library for listening to Etheruem events",
+  "version": "0.0.1-beta.4",
+  "description": "Robust library for listening to Ethereum events",
   "main": "build/index.js",
   "files": [
     "build/**/*"
