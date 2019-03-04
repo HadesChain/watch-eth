@@ -1,4 +1,4 @@
-import { should } from '../../setup'
+import { should } from '../../helpers/setup'
 import { DefaultEventDB } from '../../../src/event-db/default-event-db'
 
 describe('DefaultEventDB', () => {

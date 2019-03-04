@@ -15,8 +15,8 @@ export class DefaultEthProvider implements BaseEthProvider {
 
   constructor(options: DefaultEthProviderOptions = {}) {
     options = {
-      ...options,
       ...defaultOptions,
+      ...options,
     }
 
     this.web3 = new Web3(options.endpoint)
@@ -49,10 +49,11 @@ export class DefaultEthProvider implements BaseEthProvider {
    */
   public async getEvents(filter: FullEventFilter): Promise<EventLog[]> {
     const contract = new this.web3.eth.Contract(filter.abi, filter.address)
-    const events = await contract.getPastEvents(
-      filter.event,
-      filter.indexed || {}
-    )
+    const events = await contract.getPastEvents(filter.event, {
+      ...(filter.indexed || {}),
+      fromBlock: filter.fromBlock,
+      toBlock: filter.toBlock,
+    })
     return events.map((event) => {
       return new EventLog(event)
     })

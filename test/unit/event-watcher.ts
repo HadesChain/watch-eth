@@ -1,6 +1,6 @@
-import { should } from '../setup'
-import * as mockEth from '../mock/eth-provider'
-import * as mockDB from '../mock/event-db'
+import { should } from '../helpers/setup'
+import * as mockEth from '../helpers/mock/eth-provider'
+import * as mockDB from '../helpers/mock/event-db'
 
 import { EventWatcher } from '../../src/event-watcher'
 import { EventLog } from '../../src/models'

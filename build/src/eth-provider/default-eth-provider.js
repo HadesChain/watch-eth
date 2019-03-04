@@ -57,7 +57,7 @@ var defaultOptions = {
 var DefaultEthProvider = /** @class */ (function () {
     function DefaultEthProvider(options) {
         if (options === void 0) { options = {}; }
-        options = __assign({}, options, defaultOptions);
+        options = __assign({}, defaultOptions, options);
         this.web3 = new web3_1.default(options.endpoint);
     }
     /**
@@ -105,7 +105,7 @@ var DefaultEthProvider = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         contract = new this.web3.eth.Contract(filter.abi, filter.address);
-                        return [4 /*yield*/, contract.getPastEvents(filter.event, filter.indexed || {})];
+                        return [4 /*yield*/, contract.getPastEvents(filter.event, __assign({}, filter.indexed || {}, { fromBlock: filter.fromBlock, toBlock: filter.toBlock }))];
                     case 1:
                         events = _a.sent();
                         return [2 /*return*/, events.map(function (event) {

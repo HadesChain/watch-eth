@@ -1,6 +1,6 @@
 import { instance, mock, when, anything } from 'ts-mockito'
-import { DefaultEthProvider } from '../../src/eth-provider/default-eth-provider'
-import { EventLog } from '../../src/models'
+import { DefaultEthProvider } from '../../../src/eth-provider/default-eth-provider'
+import { EventLog } from '../../../src/models'
 
 const mockEthProvider = mock(DefaultEthProvider)
 
