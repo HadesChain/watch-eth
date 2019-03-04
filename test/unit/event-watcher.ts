@@ -1,9 +1,11 @@
 import { should } from '../setup'
 import * as mockEth from '../mock/eth-provider'
+import * as mockDB from '../mock/event-db'
 
 import { EventWatcher } from '../../src/event-watcher'
-import { EventFilterOptions, EventLog } from '../../src/models'
+import { EventLog } from '../../src/models'
 import { sleep } from '../../src/utils'
+import { capture } from 'ts-mockito'
 
 /**
  * Small class for spying on listeners.
@@ -40,6 +42,7 @@ const createWatcher = (finalityDepth = 0) => {
     finalityDepth,
     pollInterval: 0,
     eth: mockEth.eth,
+    db: mockDB.db,
   })
 }
 
@@ -137,6 +140,9 @@ describe('EventWatcher', () => {
       await sleep(10)
 
       spy.args.should.deep.equal([event])
+      capture(mockDB.dbSpy.setEventSeen)
+        .last()[0]
+        .should.deep.equal(event.hash)
     })
 
     it('should alert multiple listeners on the same event', async () => {
@@ -160,6 +166,9 @@ describe('EventWatcher', () => {
 
       spy1.args.should.deep.equal([event])
       spy2.args.should.deep.equal([event])
+      capture(mockDB.dbSpy.setEventSeen)
+        .last()[0]
+        .should.deep.equal(event.hash)
     })
 
     it('should only alert the same event once', async () => {
