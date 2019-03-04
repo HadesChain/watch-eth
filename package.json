@@ -1,6 +1,6 @@
 {
   "name": "watch-eth",
-  "version": "0.0.1-beta.5",
+  "version": "0.0.1-beta.6",
   "description": "Robust library for listening to Ethereum events",
   "main": "build/index.js",
   "files": [
@@ -12,8 +12,7 @@
     "test.integration": "mocha --timeout 20000 --require ts-node/register 'test/integration/**/*.ts'",
     "lint": "prettier --check '{src,test}/**/*.{ts,json}' 'index.ts'",
     "fix": "prettier --write '{src,test}/**/*.{ts,json}' 'index.ts'",
-    "compile": "tsc -p .",
-    "postinstall": "rm ./node_modules/web3/types/index.d.ts"
+    "compile": "tsc -p ."
   },
   "husky": {
     "hooks": {
